@@ -43,14 +43,10 @@ function featured () {
 }
 
 function lastId () {
-  return fs
-    .readdirSync(eventsDir)
-    .map(function (fileName) {
-      return Number(fileName.split('.')[0]);
-    })
-    .sort(function (a, b) {
-      return b > a;
-    })[0];
+    return fs
+      .readdirSync(eventsDir)
+      .map( (fileName) => Number(fileName.split('.')[0]) )
+      .reverse()[0];
 }
 
 module.exports = {
