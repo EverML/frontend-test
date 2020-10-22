@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import Error from "../Error";
-import Loading from "../Loading";
 import Events from "../Events";
 import HighLights from "../Highlights";
+
+import EventContext from "../EventContext";
 
 const fakeWait = (value) =>
   new Promise((resolve) => {
@@ -54,22 +54,27 @@ function Layout() {
       );
   }, []);
 
-  if (error) {
-    return <Error error={error} />;
-  } else if (!isLoaded) {
-    return <Loading />;
-  } else {
     return (
-      <Container>
-        <InnerContainer>
-          <TwoColumnLayout>
-            <Events events={events} />
-            <HighLights />
-          </TwoColumnLayout>
-        </InnerContainer>
-      </Container>
+      <EventContext.Provider
+        value={{
+          error,
+          isLoaded,
+          events,
+          setEvents,
+          setError,
+          setIsLoaded
+        }}
+      >
+        <Container>
+          <InnerContainer>
+            <TwoColumnLayout>
+              <Events/>
+              <HighLights />
+            </TwoColumnLayout>
+          </InnerContainer>
+        </Container>
+      </EventContext.Provider>
     );
-  }
 }
 
 export default Layout;
