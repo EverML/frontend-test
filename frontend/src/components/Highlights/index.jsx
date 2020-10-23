@@ -34,6 +34,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding-right:0.5rem;
 `;
 
 function Highlights() {
@@ -66,7 +67,7 @@ function Highlights() {
             <EventImage src={event.eventImage} alt={event.title} />
             <Content>
               <Title>{event.title}</Title>
-              <ShortDesc>{event.description.slice(0,40)+'...'}</ShortDesc>
+              <ShortDesc>{event.description.slice(0,50)+'...'}</ShortDesc>
               <Location>{event.location}</Location>
             </Content>
           </EventContainer>

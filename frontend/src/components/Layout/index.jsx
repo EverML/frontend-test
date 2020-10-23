@@ -1,9 +1,15 @@
 import React from "react";
+import {  Link } from "react-router-dom";
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+
+
 import styled from "@emotion/styled";
+
 
 import Events from "../Events";
 import HighLights from "../Highlights";
-
 import EventContext from "../EventContext";
 
 const fakeWait = (value) =>
@@ -19,11 +25,13 @@ const Container = styled.div`
   justify-content: center;
   padding: 1rem;
   width: 100%;
+  height:calc(100vh - 65px);
 `;
 
 const InnerContainer = styled.div`
   width: 100%;
   max-width: 1120px;
+  height:100%;
 `;
 
 const TwoColumnLayout = styled.div`
@@ -31,8 +39,29 @@ const TwoColumnLayout = styled.div`
   grid-template-columns: 70% 30%;
   grid-column-gap: 1rem;
 `;
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    root: {
+      display:'flex',
+      flexDirection:'column',
+      alignSelf:'flex-end',
+      '& > *': {
+        margin: theme.spacing(1),
+
+      },
+    },
+    extendedIcon: {
+      marginRight: theme.spacing(1),
+    },
+    
+  }),
+);
+
+
+
 
 function Layout() {
+  const classes = useStyles();
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [events, setEvents] = React.useState([]);
@@ -72,7 +101,14 @@ function Layout() {
               <HighLights />
             </TwoColumnLayout>
           </InnerContainer>
+          <div className={classes.root}>
+          <Fab color="primary" aria-label="add" component={Link} to="/newEvent"  >
+            <AddIcon />
+          </Fab>
+         
+          </div>
         </Container>
+       
       </EventContext.Provider>
     );
 }
