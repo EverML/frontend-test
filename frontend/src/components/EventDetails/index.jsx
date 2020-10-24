@@ -24,7 +24,7 @@ function EventDetails() {
         console.log(error);
       }
     );
-}, []);
+}, [url]);
   
 
 

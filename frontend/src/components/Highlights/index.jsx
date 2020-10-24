@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Box from '@material-ui/core/Box';
+
 
 import Loading from "../Loading";
 
@@ -60,7 +62,7 @@ function Highlights() {
   //return <Events events={highlights} />
   else
     return (
-      <div>
+      <Box display={{ xs: 'none', sm: 'block' }}> 
         <header>Today's Highlights</header>
         <hr />
         {highlights.map((event) => (
@@ -73,7 +75,7 @@ function Highlights() {
             </Content>
           </EventContainer>
         ))}
-      </div>
+      </Box>
     );
 }
 

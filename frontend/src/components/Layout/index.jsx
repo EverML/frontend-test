@@ -28,11 +28,13 @@ const InnerContainer = styled.div`
   height:100%;
 `;
 
-const TwoColumnLayout = styled.div`
+const LayoutBase = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
   grid-column-gap: 1rem;
 `;
+
+
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -90,10 +92,10 @@ function Layout() {
       >
         <Container>
           <InnerContainer>
-            <TwoColumnLayout>
+            <LayoutBase>
               <Events/>
               <HighLights />
-            </TwoColumnLayout>
+            </LayoutBase>
           </InnerContainer>
           <div className={classes.root}>
           <Fab color="primary" aria-label="add" component={Link} to="/newEvent"  >
