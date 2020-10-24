@@ -12,12 +12,6 @@ import Events from "../Events";
 import HighLights from "../Highlights";
 import EventContext from "../EventContext";
 
-const fakeWait = (value) =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(value);
-    }, 1000);
-  });
 
 const Container = styled.div`
   display: flex;
@@ -67,13 +61,13 @@ function Layout() {
   const [events, setEvents] = React.useState([]);
 
   React.useEffect(() => {
-    fetch("http://localhost:3000/events")
-      .then(fakeWait)
+    fetch("http://localhost:3333/events")
       .then((res) => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
-          setEvents(result.events);
+          setEvents([...result]);
+          console.log(result);
         },
         (error) => {
           console.log(error);

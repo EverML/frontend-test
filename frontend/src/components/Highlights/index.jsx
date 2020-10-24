@@ -42,12 +42,13 @@ function Highlights() {
   const [isLoaded, setIsLoaded] = React.useState(false);
 
   React.useEffect(() => {
-    fetch("http://localhost:3000/events/featured")
+    fetch("http://localhost:3333/events/featured")
       .then((res) => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
-          setHighlights(result.events);
+          console.log(result);
+          setHighlights([...result]);
         },
         (error) => {
           console.log(error);

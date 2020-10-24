@@ -6,11 +6,11 @@ import Loading from '../Loading';
 
 
 function EventDetails() {
-  const [event,setEvent] = React.useState([]);
+  const [event,setEvent] = React.useState({});
   const [isLoaded, setIsLoaded] = React.useState(false);
   const  { id } = useParams();
 
-  const url =  `http://localhost:3000/events/${id}`;
+  const url =  `http://localhost:3333/events/${id}`;
 
   React.useEffect(() => {
     fetch(url)
@@ -18,7 +18,7 @@ function EventDetails() {
     .then(
       (result) => {
         setIsLoaded(true);
-        setEvent(result.event);
+        setEvent(result);
       },
       (error) => {
         console.log(error);
