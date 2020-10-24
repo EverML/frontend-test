@@ -38,9 +38,12 @@ const LayoutBase = styled.div`
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
+      position:'fixed',
       display:'flex',
       flexDirection:'column',
       alignSelf:'flex-end',
+      left: '80%',
+      top: '88%',
       '& > *': {
         margin: theme.spacing(1),
 
