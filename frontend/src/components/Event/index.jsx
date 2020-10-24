@@ -10,6 +10,9 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
+import {TwitterShareButton} from "react-share";
+
+
 import './index.css';
 
 Event.propTypes = {
@@ -18,7 +21,7 @@ Event.propTypes = {
     title: PropTypes.string,
     eventImage: PropTypes.string,
     description: PropTypes.string,
-    dates: PropTypes.arrayOf(PropTypes.string),
+    dates: PropTypes.arrayOf(PropTypes.shape),
     location: PropTypes.string,
   }),
 };
@@ -61,9 +64,11 @@ function Event({ event }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
+
+      <TwitterShareButton url={`https://events-ingenious.com/${event.id} `} title={event.title} >
+             Share
+      </TwitterShareButton>
+
         <Button size="small" color="primary" component={Link} to={`/event/${event.id}`}>
           Learn More
         </Button>
