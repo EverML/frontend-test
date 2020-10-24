@@ -12,6 +12,8 @@ import Typography from "@material-ui/core/Typography";
 
 import {TwitterShareButton} from "react-share";
 
+import { Twitter } from '@material-ui/icons/'
+
 
 import './index.css';
 
@@ -35,6 +37,18 @@ const useStyles = makeStyles({
   media: {
     height: 150,
   },
+  actions:{
+    justifyContent:'space-around',
+  },
+  button:{
+    display: 'inline-flex'
+  },
+  icon:{
+    alignSelf:'center',
+  },
+  text:{
+    alignSelf:'center'
+  }
   
 });
 
@@ -63,10 +77,18 @@ function Event({ event }) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions className={classes.actions}>
 
-      <TwitterShareButton url={`https://events-ingenious.com/${event.id} `} title={event.title} >
-             Share
+      <TwitterShareButton
+          className={classes.button}
+          hashtags={['ingenious']}
+          via="Ingenious Events App!" 
+          url={`https://events-ingenious.com/${event.id} `}
+          title={`I'm going to: ${event.title} @ ${event.dates[0].event_date}`} >
+             <Twitter/>
+             <Typography variant="body2" color="textSecondary" component="p" className={classes.text}>
+               Tweet This Event!
+              </Typography>
       </TwitterShareButton>
 
         <Button size="small" color="primary" component={Link} to={`/event/${event.id}`}>
